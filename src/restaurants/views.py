@@ -5,6 +5,8 @@ from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
 
+from .models import RestaurantLocation
+
 
 # Create your views here.
 def home(request):
@@ -65,3 +67,12 @@ class AboutTemplateView(TemplateView):
 
 class ContactTemplateView(TemplateView):
 	template_name = "contact.html"
+
+
+def restaurant_listview(request):
+	queryset = RestaurantLocation.objects.all()
+	template_name = 'restaurants/restaurants_list.html'
+	context = {	
+		"object_list": queryset,
+	}
+	return render(request, template_name, context)

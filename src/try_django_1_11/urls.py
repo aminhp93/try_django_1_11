@@ -16,11 +16,17 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from restaurants.views import AboutTemplateView, HomeTemplateView, ContactTemplateView
+from restaurants.views import (
+    AboutTemplateView, 
+    HomeTemplateView, 
+    ContactTemplateView,
+    restaurant_listview,
+    )
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', HomeTemplateView.as_view()),
+    url(r'^restaurants/$', restaurant_listview),
     url(r'^about/$', AboutTemplateView.as_view()),
     url(r'^contact/(?P<id>\d+)/$', ContactTemplateView.as_view()),
 ]

@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Try Django 1.11</title>
+    <meta charset="UTF-8">
+    <title>Try Django 1.11</title>
+    {% include 'snippets/css.html' %}
 </head>
+
 <body>
-	<div class="container">
-		{% block content %}
-		{% endblock %}
-	</div>
-	
+    {% include 'snippets/nav.html' %}
+    <div class="container">
+        {% block content %} {% endblock %}
+    </div>
+    {% include 'snippets/js.html' %}
 </body>
+
 </html>

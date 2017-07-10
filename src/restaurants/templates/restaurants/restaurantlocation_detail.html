@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div>{{ object.name }} <small>{{ object.category }}</small></div>
+<div>{{ object.title }} | {{ object.name }} <small>{{ object.category }}</small></div>
 <div>{{ object.location }}</div>
 <div>{{ object.timestamp }} Updated {{ object.updated|timesince }}</div>
 {% endblock %}

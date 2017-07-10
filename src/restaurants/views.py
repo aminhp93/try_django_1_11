@@ -8,13 +8,29 @@ from django.shortcuts import render
 def home(request):
 	num = random.randint(0, 111111)
 	lists = [2, 5, 6]
-	template = "base.html"
-
+	
+	template = "home.html"
 	context = {
 			"context_var": "True",
 			"num": num, 
 			"bool_item": True,
 			"lists": lists
+	}
+
+	return render(request, template, context)
+
+def contact(request):
+	template = "contact.html"
+	context = {
+			"title": "Contact"
+	}
+
+	return render(request, template, context)
+
+def about(request):
+	template = "about.html"
+	context = {
+			"title": "About"
 	}
 
 	return render(request, template, context)

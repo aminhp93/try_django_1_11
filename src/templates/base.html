@@ -5,19 +5,10 @@
 	<title>Try Django 1.11</title>
 </head>
 <body>
-	<div>Hello world {{ context_var }}</div>
-	<div>
-		{% if bool_item %}
-		 {{ num }}
-		{% endif %}
+	<div class="container">
+		{% block content %}
+		{% endblock %}
 	</div>
-	<div>
-		{% for item in lists %}
-			{% if item|divisibleby:"2" %}
-			Even number
-			{% endif %}
-			<li>{{ item }}</li>
-		{% endfor %}
-	</div>
+	
 </body>
 </html>

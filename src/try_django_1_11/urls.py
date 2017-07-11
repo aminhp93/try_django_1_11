@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth.views import LoginView
 
@@ -31,13 +31,14 @@ from restaurants.views import (
 urlpatterns = [
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^admin/', admin.site.urls),
-    url(r'^$', HomeTemplateView.as_view()),
-    url(r'^restaurants/$', RestaurantListView.as_view()),
+    url(r'^$', HomeTemplateView.as_view(), name='home'),
+    url(r'^restaurants/', include('restaurants.urls', namespace='restaurants')),
+    # url(r'^restaurants/$', RestaurantListView.as_view(), name='restaurants'),
     # url(r'^restaurants/(?P<slug>[\w-]+)/$', RestaurantListView.as_view()),
     # url(r'^restaurants/create/$', restaurant_createview),
-    url(r'^restaurants/create/$', RestaurantCreateView.as_view()),
-    url(r'^restaurants/(?P<slug>[\w-]+)/$', RestaurantDetailView.as_view()),
+    # url(r'^restaurants/create/$', RestaurantCreateView.as_view(), name='restaurant-create'),
+    # url(r'^restaurants/(?P<slug>[\w-]+)/$', RestaurantDetailView.as_view(), name='restaurant-detail'),
 
-    url(r'^about/$', AboutTemplateView.as_view()),
+    url(r'^about/$', AboutTemplateView.as_view(), name='about'),
     url(r'^contact/(?P<id>\d+)/$', ContactTemplateView.as_view()),
 ]

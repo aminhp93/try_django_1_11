@@ -29,15 +29,15 @@ from restaurants.views import (
     )
 
 urlpatterns = [
-    url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^admin/', admin.site.urls),
     url(r'^$', HomeTemplateView.as_view(), name='home'),
+    url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^restaurants/', include('restaurants.urls', namespace='restaurants')),
     # url(r'^restaurants/$', RestaurantListView.as_view(), name='restaurants'),
     # url(r'^restaurants/(?P<slug>[\w-]+)/$', RestaurantListView.as_view()),
     # url(r'^restaurants/create/$', restaurant_createview),
-    # url(r'^restaurants/create/$', RestaurantCreateView.as_view(), name='restaurant-create'),
-    # url(r'^restaurants/(?P<slug>[\w-]+)/$', RestaurantDetailView.as_view(), name='restaurant-detail'),
+    # url(r'^restaurants/create/$', RestaurantCreateView.as_view(), name='restaurants-create'),
+    # url(r'^restaurants/(?P<slug>[\w-]+)/$', RestaurantDetailView.as_view(), name='restaurants-detail'),
 
     url(r'^about/$', AboutTemplateView.as_view(), name='about'),
     url(r'^contact/(?P<id>\d+)/$', ContactTemplateView.as_view()),

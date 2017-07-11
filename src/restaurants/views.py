@@ -71,19 +71,24 @@ class ContactTemplateView(TemplateView):
 	template_name = "contact.html"
 
 def restaurant_createview(request):
-	if request.method == "POST":
-		print("POST ")
-		title = request.POST.get("title")
-		location = request.POST.get("location")
-		category = request.POST.get("category")
+	form = RestaurantCreateForm(request.POST or None)
+
+	# title = request.POST.get("title")
+	# location = request.POST.get("location")
+	# category = request.POST.get("category")
+	if form.is_valid():
 		obj = RestaurantLocation.objects.create(
-				name = title,
-				location=location,
-				category=category
+				name = form.cleaned_data.get("name"),
+				location=form.cleaned_data.get("location"),
+				category=form.cleaned_data.get("category")
 			)
+		print(obj)
 		return HttpResponseRedirect("/restaurants/")
+	if form.errors:
+		print(form.errors)
+		
 	template_name = "restaurants/form.html"
-	context = {}
+	context = {"form": form}
 	return render (request, template_name, context)
 
 

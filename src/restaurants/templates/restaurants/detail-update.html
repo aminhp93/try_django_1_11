@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %} {{ form.instance.title }} | {{ block.super }} {% endblock %}
+{% block content %}
+<div>{{ form.instance.title }} | {{ form.instance.name }} <small>{{ form.instance.category }}</small></div>
+<div>{{ form.instance.location }}</div>
+<div>{{ form.instance.timestamp }} Updated {{ form.instance.updated|timesince }}</div>
+{% include 'snippets/form-snippet.html' with form=form %}
+
+{% endblock %}

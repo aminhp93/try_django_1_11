@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block title %} Menu Items| {{ block.super }}{% endblock %} {% block content %}
+<div>Menu Items</div>
+<h2>{{ form.instance.name }} | {{ form.instance.restaurant.name }}
+</h2>
+<ul>
+    <li>
+        {% if form.instance.content %} Content
+        <ul>
+            {% for item in form.instance.get_content %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %} {% if form.instance.exclude %} Exclude
+        <ul>
+            {% for item in form.instance.get_content %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        Make changes
+        {% include 'snippets/form-snippet.html' with form=form %}
+    </li>
+</ul>
+{% endblock %}

@@ -1,0 +1,8 @@
+<form action="" method="POST">
+	{% csrf_token %}
+	<!-- <input type="text" name="name" placeholder="your title"><br>
+	<input type="text" name="location" placeholder="location"><br>
+	<input type="text" name="category" placeholder="category"><br> -->
+	{{ form.as_p }}
+	<input type="submit">
+</form>

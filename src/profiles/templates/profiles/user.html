@@ -1,26 +1,20 @@
-{% extends 'base.html' %}
-{% block title %}{{ user.username }} | {{ block.super }}{% endblock %}
-{% block content %}
-{{ user.username }}
-
-{% if user.item_set.all.exists %}
-
-{% for rest in user.restaurantlocation_set.all %}
-	<li>{{ rest.title }}
-	<ul>
-	{% for item in rest.item_set.all %}
-		<li>{{ item.name }}
-			{% for ing in item.get_content %}
-				<span>{{ ing }}</span>
-			{% endfor %}
-		</li>
-
-	{% endfor %}
-	</ul>
-	</li>
-{% endfor %}
-{% else %}
+{% extends 'base.html' %} {% block title %}{{ user.username }} | {{ block.super }}{% endblock %} {% block content %}
+<h1>{{ user.username }}</h1> {% if user.item_set.all.exists %} {% for rest in user.restaurantlocation_set.all %}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="thumbnail">
+            <li><h4>{{ rest.title }}</h4>
+                <ul>
+                    {% for item in rest.item_set.all %}
+                    <li>{{ item.name }} {% for ing in item.get_content %}
+                        <span class="badge badge-default">{{ ing }}</span> {% endfor %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        </div>
+    </div>
+</div>
+{% endfor %} {% else %}
 <p class="lead">No Item Found</p>
-{% endif %}
-
-{% endblock %}
+{% endif %} {% endblock %}

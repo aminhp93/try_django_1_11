@@ -32,6 +32,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', HomeTemplateView.as_view(), name='home'),
     url(r'^login/$', LoginView.as_view(), name='login'),
+    url(r'^profiles/', include('profiles.urls', namespace='profiles')),
     url(r'^items/', include('menus.urls', namespace='menus')),
     url(r'^restaurants/', include('restaurants.urls', namespace='restaurants')),
     # url(r'^restaurants/$', RestaurantListView.as_view(), name='restaurants'),

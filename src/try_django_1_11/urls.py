@@ -17,6 +17,8 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth.views import LoginView
 
+from menus.views import HomeView
+
 from restaurants.views import (
     AboutTemplateView, 
     HomeTemplateView, 
@@ -32,7 +34,7 @@ from profiles.views import ProfileFollowToggle
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', HomeTemplateView.as_view(), name='home'),
+    url(r'^$', HomeView.as_view(), name='home'),
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^profile-follow/$', ProfileFollowToggle.as_view(), name='follow'),
     url(r'^profiles/', include('profiles.urls', namespace='profiles')),

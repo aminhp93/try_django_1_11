@@ -19,7 +19,7 @@ Is Following
                 <ul>
                     {% for item in rest.item_set.all %}
                     <li>{{ item.name }} {% for ing in item.get_content %}
-                        <span class="badge badge-default"><a href="{{ request.path }}?q={{ ing }}">{{ ing }}</a></span> {% endfor %}
+                        <a href="{{ request.path }}?q={{ ing }}">{{ ing }}</a>{% endfor %}
                     </li>
                     {% endfor %}
                 </ul>

@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
-{% block title %} Menu Items| {{ block.super }}{% endblock %}
+{% block title %} Home Feed| {{ block.super }}{% endblock %}
 {% block content %}
-<div>Menu Items | <a href="{% url 'menus:create' %}">Add</a></div>
-
+<div>Menu Items</div>
 <ul>
 	{% for obj in object_list %}
-		<li><a href="{{ obj.get_absolute_url }}">{{ obj.name }}</a><br>
+		<li class="thumbnail"><a href="{{ obj.get_absolute_url }}"> | {{ obj.name }}</a><br>
+			<h3>Restaurant Name: {{ obj.restaurant.title }}</h3>
 			{% if obj.content %}
 			Content
 			<ul>

@@ -13,7 +13,7 @@ def clean_email(self):
 		raise ValidationError("We do not accept edu emails")
 	return email
 
-CATEGORIES = ['Mexican', 'Asian', "American"]
+CATEGORIES = ['Mexican', 'Asian', "American", 'Pizza']
 
 def validate_category(value):
 	cat = value.capitalize()

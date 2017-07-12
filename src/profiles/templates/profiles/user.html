@@ -1,5 +1,12 @@
 {% extends 'base.html' %} {% block title %}{{ user.username }} | {{ block.super }}{% endblock %} {% block content %}
-<h1>{{ user.username }}</h1> {% if user.item_set.all.exists %} {% for rest in user.restaurantlocation_set.all %}
+<h1>{{ user.username }}</h1> 
+<form action="" class="form">
+    <input type="text" placeholder="Search" name="q" value='{{ request.GET.q }}'>
+    <input type="submit">
+</form>
+{% if user.item_set.all.exists %}
+{% if locations %}
+{% for rest in locations %}
 <div class="row">
     <div class="col-sm-12">
         <div class="thumbnail">
@@ -7,7 +14,7 @@
                 <ul>
                     {% for item in rest.item_set.all %}
                     <li>{{ item.name }} {% for ing in item.get_content %}
-                        <span class="badge badge-default">{{ ing }}</span> {% endfor %}
+                        <span class="badge badge-default"><a href="{{ request.path }}?q={{ ing }}">{{ ing }}</a></span> {% endfor %}
                     </li>
                     {% endfor %}
                 </ul>
@@ -15,6 +22,8 @@
         </div>
     </div>
 </div>
-{% endfor %} {% else %}
+{% endfor %} 
+{% endif %}
+{% else %}
 <p class="lead">No Item Found</p>
 {% endif %} {% endblock %}

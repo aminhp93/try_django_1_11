@@ -1,5 +1,10 @@
 {% extends 'base.html' %} {% block title %}{{ user.username }} | {{ block.super }}{% endblock %} {% block content %}
 <h1>{{ user.username }}</h1> 
+{{ request.user.is_following.all }}
+{% if user.profile in request.user.is_following.all %}
+Is Following 
+{% endif %}
+{% include 'profiles/snippets/follow_form.html' with username=user.username is_following=is_following %}
 <form action="" class="form">
     <input type="text" placeholder="Search" name="q" value='{{ request.GET.q }}'>
     <input type="submit">

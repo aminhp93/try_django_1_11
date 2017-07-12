@@ -28,10 +28,13 @@ from restaurants.views import (
     RestaurantCreateView
     )
 
+from profiles.views import ProfileFollowToggle
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', HomeTemplateView.as_view(), name='home'),
     url(r'^login/$', LoginView.as_view(), name='login'),
+    url(r'^profile-follow/$', ProfileFollowToggle.as_view(), name='follow'),
     url(r'^profiles/', include('profiles.urls', namespace='profiles')),
     url(r'^items/', include('menus.urls', namespace='menus')),
     url(r'^restaurants/', include('restaurants.urls', namespace='restaurants')),
